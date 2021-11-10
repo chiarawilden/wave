@@ -1,0 +1,99 @@
+.toggle {
+    position: absolute;
+    top: 66px;
+    right: 44px;
+    width: 44px;
+    height: 16px;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+    z-index: 1;
+}
+
+.toggle:hover {
+    cursor: pointer;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -444px;
+    height: 100%;
+    width: 444px;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 1s ease;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .menu {
+        right: -500px;
+        width: 100vw;
+    }
+}
+
+.open {
+    right: 0px;
+}
+
+.info {
+    margin-bottom: 2rem;
+}
+
+.menu h1 {
+    padding: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #000;
+    color: #000;
+    font-size: 3rem;
+}
+
+.menu h2 {
+    padding: 2rem 2rem 0 2rem;
+    color: #000;
+    font-size: 1.18rem;
+}
+
+@media screen and (max-width: 500px) {   
+    .menu h1 {
+        font-size: 2.2rem;
+    }
+    
+    .menu h2 {
+        font-size: 1rem;
+    }
+}
+
+.menu a, .menu a:active, .menu a:visited {
+    color: #000;
+    transition: 0.4s ease;
+}
+
+.menu a:hover {
+    color: rgb(255, 153, 247);
+}
+
+.close {
+    padding: 3rem 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.4s ease;
+}
+
+.close:hover {
+    color: rgb(255, 153, 247);
+}

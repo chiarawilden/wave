@@ -1,0 +1,305 @@
+.main {
+    position: relative;
+    height: 100vh;
+    flex: 3.3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* --------------------------
+-- WALLET IS NOT CONNECTED --
+--------------------------- */
+
+.disconnected {
+    position: relative;
+    padding: 0 4rem;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+}
+
+.disconnected .content {
+    padding-bottom: 2rem;
+}
+
+.buildspace-desc {
+    position: absolute;
+    padding: 0 4rem;
+    bottom: 44px;
+}
+
+.blur1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    background-color: rgba(255, 211, 251, 0.5);
+    filter: blur(111px);
+    transition: 1s all ease;
+    animation: light1 33s ease-in-out alternate infinite;
+}
+
+@keyframes light1 {
+    0% {transform: translate(0%, 0%);}
+    40% {transform: translate(-200%, 100%);}
+    70% {transform: translate(-77%, 100%);}
+    100% {transform: translate(0%, 11%);}
+}
+
+@-webkit-keyframes light1 {
+    0% {transform: translate(0%, 0%);}
+    40% {transform: translate(-200%, 100%);}
+    70% {transform: translate(-22%, 100%);}
+    100% {transform: translate(0%, 11%);}
+}
+
+.blur2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: rgba(172, 236, 255, 0.8);
+    filter: blur(111px);
+    transition: 1s all ease;
+    animation: light2 22s ease-in-out alternate infinite;
+}
+
+@keyframes light2 {
+    0% {transform: translate(0%, 0%);}
+    40% {transform: translate(-200%, 100%);}
+    70% {transform: translate(-22%, 100%);}
+    100% {transform: translate(0%, 11%);}
+}
+
+@-webkit-keyframes light2 {
+    0% {transform: translate(0%, 0%);}
+    40% {transform: translate(-200%, 100%);}
+    70% {transform: translate(-22%, 100%);}
+    100% {transform: translate(0%, 11%);}
+}
+
+@media screen and (max-width: 600px) {
+    .disconnected {
+        padding: 0 2rem;
+    }
+
+    .disconnected h1 {
+        text-align: left;
+        font-size: 2rem;
+    }
+
+    .disconnected h2 {
+        font-size: 1.2rem;
+    }
+
+    .buildspace-desc {
+        padding: 0 2rem;
+    }
+}
+
+/* -----------------------
+++ WALLET IS CONNECTED ++
+------------------------ */
+.banner {
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(33px);
+    -webkit-backdrop-filter: blur(33px);
+    border-bottom: 2px solid transparent;
+    box-shadow: 11px 11px 11px rgba(44, 55, 66, 0.04);
+    text-transform: uppercase;
+}
+
+.connected {
+    position: relative;
+    width: 80%;
+    padding-bottom: 7rem;
+}
+
+.message-form {
+    margin-top: 144px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #FFF;
+    border-radius: 44px;
+}
+
+.message-form input {
+    padding: 22px;
+    height: 100%;
+    flex: 9;
+    background-color: transparent;
+    border: none;
+    border-radius: 44px 0 0 44px;
+    color: #FFF;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+}
+
+.message-form input::placeholder, .message-form::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.message-form input:hover, input:focus {
+    outline: none;
+}
+
+.wave-button {
+    padding: 22px;
+    height: 100%;
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid #FFF;
+    border-radius: 0 44px 44px 0;
+    color: #FFF;
+    letter-spacing: 0.07rem;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    transition: 0.8s ease-in-out;
+}
+
+.high-five {
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+}
+
+.high-five-button {
+    height: 44px;
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.44rem;
+    animation: bounce 0.7s ease-in-out alternate infinite;
+    transition: 1s ease;
+}
+
+@keyframes bounce {
+    0% {transform: translateY(-2px);}
+    100% {transform: translateY(2px);}
+}
+
+.high-five-button:hover {
+    filter: saturate(1.8);
+}
+
+.wave-button:hover, .high-five-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.stats {
+    padding: 22px 0 22px 22px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFF;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.07rem;
+    transition: all 2s ease;
+}
+
+@media screen and (max-width: 500px) {
+    .stats {
+        font-size: 0.8rem;
+    }
+}
+
+.message {
+    margin: 33px 0;
+    padding: 33px 44px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+    background-color: rgba(255, 255, 255, 0.17);
+    border-radius: 33px;
+    box-shadow: 0px 0px 8px rgba(51, 51, 51, 0.14);
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+}
+
+.message .sender {
+    padding-bottom: 22px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.copyright {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    width: fit-content;
+    color: #FFF;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+.blur3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background-color: rgba(172, 236, 255, 0.8);
+    filter: blur(111px);
+    transition: 1s all ease;
+    animation: light3 44s ease-in-out alternate infinite;
+}
+
+@keyframes light3 {
+    0% {transform: translate(0%, 0%);}
+    11% {transform: translate(-400%, 200%);}
+    22% {transform: translate(-200%, 100%);}
+    44% {transform: translate(-100%, -77%);}
+    66% {transform: translate(11%, 111%);}
+    88% {transform: translate(77%, 22%);}
+    99% {transform: translate(333%, -88%);}
+    100% {transform: translate(144%, -122%);}
+}
+
+@-webkit-keyframes light3 {
+    0% {transform: translate(0%, 0%);}
+    11% {transform: translate(-400%, 200%);}
+    22% {transform: translate(-200%, 100%);}
+    44% {transform: translate(-100%, -77%);}
+    66% {transform: translate(11%, 111%);}
+    88% {transform: translate(77%, 22%);}
+    99% {transform: translate(333%, -88%);}
+    100% {transform: translate(144%, -122%);}
+}
