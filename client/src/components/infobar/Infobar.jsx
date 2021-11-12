@@ -36,7 +36,7 @@ export default function Infobar() {
                         This is an Ethereum blockchain based web app, or <span style={{backgroundColor: "rgba(191, 230, 255, 0.3)"}}>dapp (decentralized app)</span>. 
                         To interact with this dapp, first connect to the <a href="https://ethereum.org/en/what-is-ethereum/" target="_blank" alt="What is Ethereum?">Ethereum blockchain</a>, 
                         via a <span style={{backgroundColor: "rgba(191, 230, 255, 0.3)"}}>Web3 provider</span>, like <a href="https://metamask.io/" target="_blank" alt="MetaMask">MetaMask!</a> 
-                        &nbsp;These providers are commonly referred to as <span style={{backgroundColor: "rgba(191, 230, 255, 0.3)"}}>wallets</span>, because they allow you
+                        &nbsp;Applications such as MetaMask are commonly referred to as <span style={{backgroundColor: "rgba(191, 230, 255, 0.3)"}}>wallets</span>, because they allow you
                         to obtain and manage cryptocurrencies.
                     </h2>
                     <h2>

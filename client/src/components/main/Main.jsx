@@ -155,7 +155,11 @@ export default function Main({currentAccount}) {
                         <div className="blur1"></div>
                         <div className="blur2"></div>
                         <div className="content">
-                            <h1>Hi, I'm Chiara Wilden</h1>
+                            <h1>Hi, I'm
+                                <a href="https://chiarawilden.com" style={{textDecoration: "none", transition: "0.8s ease"}} target="_blank" alt="Personal Website">
+                                &nbsp;Chiara Wilden
+                                </a>
+                            </h1>
                             <h2>
                                 Welcome to my decentralized message board. Connect your wallet to 
                                 drop a high five, or leave me a message on Rinkeby if you're feeling 
