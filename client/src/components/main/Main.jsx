@@ -221,7 +221,7 @@ export default function Main({currentAccount}) {
                         <div className="copyright">
                             <div><a href="https://chiarawilden.com">Chiara Wilden</a> 2021</div> 
                             <div>
-                                In Partnership With&nbsp;<a href="http://buildspace.so">Buildspace</a>&nbsp;
+                               Created With&nbsp;<a href="http://buildspace.so">Buildspace</a>&nbsp;
                                 <span style={{fontSize: "0.6rem"}}>♥</span>
                             </div>
                         </div>
