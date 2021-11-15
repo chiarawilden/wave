@@ -6,9 +6,9 @@ As usual, I ran into a few snags, but with some help from [the Buildspace commun
 
 Here's the final result. I've really been digging gradients lately, they seem to be all the rage 💅🏽
 
-![Wave Portal (Landing Page)](/readme/wave-01.png)  
+![Wave Portal (Landing Page)](/readme/wave-portal-01.png)  
 
-![Wave Portal (Message Board)](/readme/wave-02.png)  
+![Wave Portal (Message Board)](/readme/wave-portal-02.png)  
 
 # Tech Stack
 
