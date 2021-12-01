@@ -7,7 +7,6 @@ export default function App() {
 
     const checkIfWalletIsConnected = async () => {
         try {
-            // Access window.ethereum
             const {ethereum} = window;
     
             if (!ethereum) {
@@ -17,7 +16,6 @@ export default function App() {
                 console.log("We have the Ethereum object", ethereum);
             }
 
-            // Check if we're authorized to access the user's wallet
             const accounts = await ethereum.request({ method: "eth_accounts" });
             
             if (accounts.length !== 0) {
@@ -38,6 +36,7 @@ export default function App() {
             console.log("Connected", accounts[0]);
             setCurrentAccount(accounts[0]); 
         } catch (error) {
+            alert("You must have MetaMask installed to use this dapp!")
             console.log(error)
         }
     }

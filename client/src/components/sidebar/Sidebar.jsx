@@ -8,11 +8,11 @@ export default function Sidebar({currentAccount, connectWallet}) {
             {!currentAccount && (
                 <>
                     <div className="banner1">
-                        <div className="banner1-text">To Begin Connect</div>
-                        <div className="banner1-text">To Begin Connect</div>
-                        <div className="banner1-text">To Begin Connect</div>
-                        <div className="banner1-text">To Begin Connect</div>
-                        <div className="banner1-text">To Begin Connect</div>
+                        <div className="banner1-text">Connect to Begin</div>
+                        <div className="banner1-text">Connect to Begin</div>
+                        <div className="banner1-text">Connect to Begin</div>
+                        <div className="banner1-text">Connect to Begin</div>
+                        <div className="banner1-text">Connect to Begin</div>
                     </div>
                     <button className="connect" onClick={connectWallet}>
                         Connect Wallet
@@ -41,7 +41,7 @@ export default function Sidebar({currentAccount, connectWallet}) {
                     <div className="social">
                         <a href="https://linkedin.com/in/chiarawilden" target="_blank" alt="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
                         <a href="https://github.com/chiarawilden/wave-portal" target="_blank" alt="GitHub"><i className="fab fa-github"></i></a>
-                        <a href="mailto:contact@chiarawilden.com" target="_blank" alt="Email"><i className="fas fa-envelope"></i></a>
+                        <a href="mailto:chiarawilden@gmail.com" target="_blank" alt="Email"><i className="fas fa-envelope"></i></a>
                         <a href="https://t.me/chiarawilden" target="_blank" alt="Twitter"><i className="fas fa-paper-plane"></i></a>
                         <a href="https://chiarawilden.com" target="_blank" alt="Personal Website"><i className="fas fa-external-link-alt"></i></a>
                     </div>

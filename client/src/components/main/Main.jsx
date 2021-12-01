@@ -4,18 +4,22 @@ import {ethers} from "ethers";
 import wavePortalAbi from "../../utils/WavePortal.json";
 import Infobar from "../infobar/Infobar";
 
-
 export default function Main({currentAccount}) {   
     const contractAddress = "0x0B7c6E03554209f99aed7A0f3D6c95F4367B0b71";
     const [allWaves, setAllWaves] = useState([]);
     const [allHighFives, setAllHighFives] = useState([]);
     const [inputMessage, setInputMessage] = useState("");
+    let wavePortalContract = {};
 
     const {ethereum} = window;
 
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-    const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
+    if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
+    } else {
+        console.log("We do not have the ethereum object");
+    }
 
     const getAllWaves = useCallback(async () => {
         try {
@@ -35,7 +39,7 @@ export default function Main({currentAccount}) {
                 });
                 setAllWaves(wavesCleaned);
             } else {
-                console.log("Connect your MetaMask wallet to interact with this app.")
+                console.log("Connect your MetaMask wallet to interact with this dapp.")
             }
         } catch(error) {
             console.log(error);
@@ -48,7 +52,7 @@ export default function Main({currentAccount}) {
                 const highFives = await wavePortalContract.getAllHighFives();
                 setAllHighFives(highFives);      
             } else {
-                console.log("Connect your MetaMask wallet to interact with this app.")
+                console.log("Connect your MetaMask wallet to interact with this dapp.")
             }
         } catch(error) {
             console.log(error);
@@ -93,47 +97,51 @@ export default function Main({currentAccount}) {
     };
 
     useEffect(() => {
-        const onNewWave = (from, timestamp, message) => {
-            let options = { 
-                weekday: "short", year: "numeric", month: "short", day: "numeric", 
-                hour: "2-digit", minute: "2-digit", second: "2-digit"
-            };
+        try {
+            const onNewWave = (from, timestamp, message) => {
+                let options = { 
+                    weekday: "short", year: "numeric", month: "short", day: "numeric", 
+                    hour: "2-digit", minute: "2-digit", second: "2-digit"
+                };
 
-            console.log("NewWave", from, timestamp, message);
+                console.log("NewWave", from, timestamp, message);
 
-            setAllWaves(prevState => [
-            ...prevState,
-            {
-                address: from,
-                timestamp: new Date(timestamp * 1000).toLocaleString("en-US", options),
-                message: message,
-            }
-            ]);
-        };
-        
-        const onNewHighFive = (from, timestamp) => {
-            console.log("NewHighFive", from, timestamp);
-            setAllHighFives(prevState => [
+                setAllWaves(prevState => [
                 ...prevState,
                 {
                     address: from,
-                    timestamp: new Data(timestamp * 100).toLocaleString("en-US")
+                    timestamp: new Date(timestamp * 1000).toLocaleString("en-US", options),
+                    message: message,
                 }
-            ]);
-        };
+                ]);
+            };
+            
+            const onNewHighFive = (from, timestamp) => {
+                console.log("NewHighFive", from, timestamp);
+                setAllHighFives(prevState => [
+                    ...prevState,
+                    {
+                        address: from,
+                        timestamp: new Data(timestamp * 100).toLocaleString("en-US")
+                    }
+                ]);
+            };
 
-        wavePortalContract.on("NewWave", onNewWave);
-        wavePortalContract.on("NewHighFive", onNewHighFive);
+            wavePortalContract.on("NewWave", onNewWave);
+            wavePortalContract.on("NewHighFive", onNewHighFive);
 
-        console.log("NewWave/HighFive componentDidUpdate");
+            console.log("NewWave/HighFive componentDidUpdate");
 
-        return () => {
-            if (wavePortalContract) {
-                wavePortalContract.off("NewWave", onNewWave);
-                wavePortalContract.off("NewHighFive", onNewHighFive)
-            }
-            console.log("NewWave || HighFive componentDidUnmount");
-        };
+            return () => {
+                if (wavePortalContract) {
+                    wavePortalContract.off("NewWave", onNewWave);
+                    wavePortalContract.off("NewHighFive", onNewHighFive)
+                }
+                console.log("NewWave || HighFive componentDidUnmount");
+            };
+        } catch(error) {
+            console.log(error);
+        }
     }, []);
 
     useEffect(() => {
@@ -144,8 +152,8 @@ export default function Main({currentAccount}) {
             console.log("getAllWaves || getAllHighFives componentDidUnmount");
         }
     }, [getAllWaves, getAllHighFives]);
-   
 
+    
     return (
         <div className="main">
            <Infobar/>
