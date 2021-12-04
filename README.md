@@ -1,10 +1,10 @@
 # Decentralized Wave Portal 👋🏽
 
-Today was a great day! I finally finished my first fully functional decentralized app, thanks to [Buildspace](https://buildspace.so). I'm super proud of this project. I think this is my favorite thing I've ever built ever 🤩
+Today was a great day! I finally finished my first fully functional decentralized app, thanks to [Buildspace](https://buildspace.so). I'm super proud of this project. I think it's my favorite thing I've ever built ever 🤩
 
-As usual, I ran into a few snags, but with some help from [the Buildspace community](https://discord.com/invite/vPmqZqgpsS) on Discord (thank you!) I was able to finish in under 1 week.
+This dapp is a decentralized message board, which allows peers to leave messages on Ethereum's Rinkeby Testnet.
 
-Here's the final result. I've really been digging gradients lately, they seem to be all the rage 💅🏽
+Naturally, I ran into a few snags, but with some help from [the Buildspace community](https://discord.com/invite/vPmqZqgpsS) on Discord (thank you!) I was able to finish in under 1 week. I've really been digging gradients lately, they seem to be all the rage.
 
 ![Wave Portal (Landing Page)](/readme/wave-portal-01.png)  
 
