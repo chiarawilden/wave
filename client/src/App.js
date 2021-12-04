@@ -34,7 +34,15 @@ export default function App() {
         try {
             const accounts = await ethereum.request({method: "eth_requestAccounts"});
             console.log("Connected", accounts[0]);
-            setCurrentAccount(accounts[0]); 
+            setCurrentAccount(accounts[0]);
+
+            let chainId = await ethereum.request({ method: "eth_chainId" });
+            console.log("Connected to chain " + chainId);
+
+            const rinkebyChainId = "0x4"; 
+            if (chainId !== rinkebyChainId) {
+                alert("Wrong network! You must connect to the Rinkeby Test Network.");
+            }
         } catch (error) {
             alert("You must have MetaMask installed to use this dapp!")
             console.log(error)
