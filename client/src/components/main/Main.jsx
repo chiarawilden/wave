@@ -9,13 +9,12 @@ export default function Main({currentAccount}) {
     const [allWaves, setAllWaves] = useState([]);
     const [allHighFives, setAllHighFives] = useState([]);
     const [inputMessage, setInputMessage] = useState("");
-    // let wavePortalContract = {};
 
     const {ethereum} = window;
 
     const getAllWaves = useCallback(async () => {
         try {
-            if (currentAccount && ethereum) {
+            if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
@@ -33,7 +32,8 @@ export default function Main({currentAccount}) {
                         message: wave.message
                     };
                 });
-                setAllWaves(wavesCleaned);    
+                setAllWaves(wavesCleaned);
+                console.log(wavesCleaned);   
             } else {
                 console.log("Connect your MetaMask wallet to interact with this dapp.")
             }
@@ -44,13 +44,14 @@ export default function Main({currentAccount}) {
 
     const getAllHighFives = useCallback(async () => {
         try {
-            if (currentAccount && ethereum) {
+            if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
                 
                 const highFives = await wavePortalContract.getAllHighFives();
-                setAllHighFives(highFives);      
+                setAllHighFives(highFives);  
+                console.log(highFives);    
             } else {
                 console.log("Connect your MetaMask wallet to interact with this dapp.")
             }
@@ -110,47 +111,51 @@ export default function Main({currentAccount}) {
 
     useEffect(() => {
         try {
-            const onNewWave = (from, timestamp, message) => {
-                let options = { 
-                    weekday: "short", year: "numeric", month: "short", day: "numeric", 
-                    hour: "2-digit", minute: "2-digit", second: "2-digit"
-                };
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
 
-                console.log("NewWave", from, timestamp, message);
+                const onNewWave = (from, timestamp, message) => {
+                    let options = { 
+                        weekday: "short", year: "numeric", month: "short", day: "numeric", 
+                        hour: "2-digit", minute: "2-digit", second: "2-digit"
+                    };
 
-                setAllWaves(prevState => [
-                ...prevState,
-                {
-                    address: from,
-                    timestamp: new Date(timestamp * 1000).toLocaleString("en-US", options),
-                    message: message,
-                }
-                ]);
-            };
-            
-            const onNewHighFive = (from, timestamp) => {
-                console.log("NewHighFive", from, timestamp);
-                setAllHighFives(prevState => [
+                    console.log("NewWave", from, timestamp, message);
+
+                    setAllWaves(prevState => [
                     ...prevState,
                     {
                         address: from,
-                        timestamp: new Date(timestamp * 100).toLocaleString("en-US")
+                        timestamp: new Date(timestamp * 1000).toLocaleString("en-US", options),
+                        message: message,
                     }
-                ]);
-            };
+                    ]);
+                };
+                
+                const onNewHighFive = (from, timestamp) => {
+                    console.log("NewHighFive", from, timestamp);
+                    setAllHighFives(prevState => [
+                        ...prevState,
+                        {
+                            address: from,
+                            timestamp: new Date(timestamp * 100).toLocaleString("en-US")
+                        }
+                    ]);
+                };
 
-            wavePortalContract.on("NewWave", onNewWave);
-            wavePortalContract.on("NewHighFive", onNewHighFive);
+                wavePortalContract.on("NewWave", onNewWave);
+                wavePortalContract.on("NewHighFive", onNewHighFive);
 
-            console.log("NewWave/HighFive componentDidUpdate");
-
-            return () => {
-                if (wavePortalContract) {
-                    wavePortalContract.off("NewWave", onNewWave);
-                    wavePortalContract.off("NewHighFive", onNewHighFive)
-                }
-                console.log("NewWave || HighFive componentDidUnmount");
-            };
+                return () => {
+                    if (wavePortalContract) {
+                        wavePortalContract.off("NewWave", onNewWave);
+                        wavePortalContract.off("NewHighFive", onNewHighFive)
+                    }
+                    console.log("NewWave || HighFive componentDidUnmount");
+                };
+            }
         } catch(error) {
             console.log(error);
         }
@@ -159,7 +164,6 @@ export default function Main({currentAccount}) {
     useEffect(() => {
         getAllWaves();
         getAllHighFives();
-        console.log("getAllWaves || getAllHighFives componentDidUpdate");
         return () => {
             console.log("getAllWaves || getAllHighFives componentDidUnmount");
         }
