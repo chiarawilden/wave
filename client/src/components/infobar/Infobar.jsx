@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./infobar.css";
 
-export default function Infobar() {
+export default function Infobar({currentAccount}) {
     const [isOpen, setIsOpen] = useState(false);
     let menuRef = useRef();
 
@@ -28,7 +28,9 @@ export default function Infobar() {
 
     return (
         <>
-            <div className="toggle" onClick={openMenu}></div> 
+            {!currentAccount && (
+                <div className="toggle" onClick={openMenu}></div> 
+            )}
             <div className={isOpen ? "menu open" : "menu"} ref={menuRef}>
                 <div className="info">
                     <h1>My wallet?&nbsp;<em>Huh?</em></h1>

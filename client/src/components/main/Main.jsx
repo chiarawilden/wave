@@ -172,7 +172,7 @@ export default function Main({currentAccount}) {
     
     return (
         <div className="main">
-           <Infobar/>
+           <Infobar currentAccount={currentAccount}/>
             {!currentAccount && (
                 <div className="disconnected">
                     <>
