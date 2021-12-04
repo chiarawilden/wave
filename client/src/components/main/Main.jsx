@@ -9,23 +9,19 @@ export default function Main({currentAccount}) {
     const [allWaves, setAllWaves] = useState([]);
     const [allHighFives, setAllHighFives] = useState([]);
     const [inputMessage, setInputMessage] = useState("");
-    let wavePortalContract = {};
+    // let wavePortalContract = {};
 
     const {ethereum} = window;
 
-    if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
-    } else {
-        console.log("We do not have the ethereum object");
-    }
-
     const getAllWaves = useCallback(async () => {
         try {
-            if (currentAccount) {
-                const waves = await wavePortalContract.getAllWaves();
+            if (currentAccount && ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
                 
+                const waves = await wavePortalContract.getAllWaves();
+
                 let wavesCleaned = waves.map(wave => {
                     let options = { 
                         weekday: "short", year: "numeric", month: "short", day: "numeric", 
@@ -37,7 +33,7 @@ export default function Main({currentAccount}) {
                         message: wave.message
                     };
                 });
-                setAllWaves(wavesCleaned);
+                setAllWaves(wavesCleaned);    
             } else {
                 console.log("Connect your MetaMask wallet to interact with this dapp.")
             }
@@ -48,7 +44,11 @@ export default function Main({currentAccount}) {
 
     const getAllHighFives = useCallback(async () => {
         try {
-            if (currentAccount) {
+            if (currentAccount && ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
+                
                 const highFives = await wavePortalContract.getAllHighFives();
                 setAllHighFives(highFives);      
             } else {
@@ -61,18 +61,24 @@ export default function Main({currentAccount}) {
 
     const wave = async () => {
         try {
-            let count = await wavePortalContract.getTotalWaves();
-            console.log("Retrieved total wave count...", count.toNumber());
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
 
-            const waveTxn = await wavePortalContract.wave(inputMessage, {gasLimit: 300000});
-            console.log("Mining...", waveTxn.hash);
+                let count = await wavePortalContract.getTotalWaves();
+                console.log("Retrieved total wave count...", count.toNumber());
 
-            await waveTxn.wait();
-            console.log("Mined -- ", waveTxn.hash);
+                const waveTxn = await wavePortalContract.wave(inputMessage, {gasLimit: 300000});
+                console.log("Mining...", waveTxn.hash);
 
-            count = await wavePortalContract.getTotalWaves();
-            console.log("Retrieved total wave count...", count.toNumber());
-            setInputMessage("");
+                await waveTxn.wait();
+                console.log("Mined -- ", waveTxn.hash);
+
+                count = await wavePortalContract.getTotalWaves();
+                console.log("Retrieved total wave count...", count.toNumber());
+                setInputMessage("");
+            }
         } catch(error) {
             console.log(error);
         }
@@ -80,17 +86,23 @@ export default function Main({currentAccount}) {
 
     const highFive = async () => {
         try {
-            let count = await wavePortalContract.getTotalHighFives();
-            console.log("Retrieved total high five count...", count.toNumber());
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
 
-            const highFiveTxn = await wavePortalContract.highFive();
-            console.log("Mining...", highFiveTxn.hash);
+                let count = await wavePortalContract.getTotalHighFives();
+                console.log("Retrieved total high five count...", count.toNumber());
 
-            await highFiveTxn.wait();
-            console.log("Mined -- ", highFiveTxn.hash);
+                const highFiveTxn = await wavePortalContract.highFive();
+                console.log("Mining...", highFiveTxn.hash);
 
-            count = await wavePortalContract.getTotalHighFives();
-            console.log("Retrieved total high five count...", count.toNumber());
+                await highFiveTxn.wait();
+                console.log("Mined -- ", highFiveTxn.hash);
+
+                count = await wavePortalContract.getTotalHighFives();
+                console.log("Retrieved total high five count...", count.toNumber());
+            }
         } catch(error) {
             console.log(error);
         }
