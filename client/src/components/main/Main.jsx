@@ -19,7 +19,6 @@ export default function Main({currentAccount}) {
         wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
     } else {
         console.log("We do not have the ethereum object");
-    }
 
     const getAllWaves = useCallback(async () => {
         try {
@@ -122,7 +121,7 @@ export default function Main({currentAccount}) {
                     ...prevState,
                     {
                         address: from,
-                        timestamp: new Data(timestamp * 100).toLocaleString("en-US")
+                        timestamp: new Date(timestamp * 100).toLocaleString("en-US")
                     }
                 ]);
             };
