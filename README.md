@@ -1,6 +1,6 @@
 # Decentralized Wave Portal 👋🏽
 
-Today was a great day!! I finally finished my first fully functional decentralized app, thanks to [Buildspace](https://buildspace.so)! I'm super proud of this project. I think this is my favorite thing I've ever built ever 😁🤩
+Today was a great day! I finally finished my first fully functional decentralized app, thanks to [Buildspace](https://buildspace.so). I'm super proud of this project. I think this is my favorite thing I've ever built ever 🤩
 
 As usual, I ran into a few snags, but with some help from [the Buildspace community](https://discord.com/invite/vPmqZqgpsS) on Discord (thank you!) I was able to finish in under 1 week.
 
@@ -13,7 +13,7 @@ Here's the final result. I've really been digging gradients lately, they seem to
 # Tech Stack
 
 * HTML, CSS, JavaScript, JSX, Solidity
-* ReactJS (using my new [React Starter](https://github.com/chiarawilden/react-starter) 😏)
+* ReactJS (using my new [React Starter](https://github.com/chiarawilden/react-starter))
 * Hardhat
 * EthersJS
 * Alchemy
@@ -37,7 +37,7 @@ It's actually not as complex as I thought it would be to deploy a decentralized 
 
 My biggest challenge was solving a MAJOR performance issue I had on the frontend, once I'd finally finished the UI. (I was so excited to deploy...5 hours later...) After learning a bit about how to use the React Profiler in Google Chrome, I was able to determine that the issue had to do with one of my ```useEffect``` hooks.
 
-My hook was causing an infinite render loop 🙈 Thanks to [this article](https://devtrium.com/posts/async-functions-useeffect) from Devtrium, I learned how to implement ```useCallback``` with an async function to stop the incessant rerendering 😅
+My hook was causing an infinite render loop 🙈 Thanks to [this article](https://devtrium.com/posts/async-functions-useeffect) from Devtrium, I learned how to implement ```useCallback``` with an async function to stop the incessant rerendering.
 
 # Room for Improvement
 
@@ -45,7 +45,7 @@ I'd love to add reply functionality. That would be fun!
 
 # Live Demo
 
-[View a live demo here](https://portfolio.chiarawilden.com/wave-portal). (And don't forget to leave me a message ☺️)
+[View a live demo here](https://portfolio.chiarawilden.com/wave-portal). (And don't forget to leave me a message!)
 
 
 
