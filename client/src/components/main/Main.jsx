@@ -19,6 +19,7 @@ export default function Main({currentAccount}) {
         wavePortalContract = new ethers.Contract(contractAddress, wavePortalAbi.abi, signer);
     } else {
         console.log("We do not have the ethereum object");
+    }
 
     const getAllWaves = useCallback(async () => {
         try {
