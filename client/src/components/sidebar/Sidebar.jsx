@@ -1,7 +1,6 @@
 import React from "react";
 import "./sidebar.css";
 
-
 export default function Sidebar({currentAccount, connectWallet}) {
     return (
         <div className="sidebar">
