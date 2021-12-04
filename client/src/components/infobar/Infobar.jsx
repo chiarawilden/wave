@@ -49,8 +49,8 @@ export default function Infobar() {
                         Follow Buildspace on <a href="https://twitter.com/_buildspace" target="_blank" alt="Buildspace Twitter">Twitter</a> or join the Buildspace 
                         &nbsp;<a href="https://discord.gg/vPmqZqgpsS" target="_blank" alt="Buildspace Discord">Discord</a> to build your own message board.
                     </h2>
-                    <div className="close" onClick={openMenu}>Close</div>
                 </div>
+                <div className="close" onClick={openMenu}>✕</div>
             </div>
         </>  
     )
