@@ -40,7 +40,7 @@ export default function Main({currentAccount}) {
         } catch(error) {
             console.log(error);
         }
-    }, []);
+    }, [currentAccount]);
 
     const getAllHighFives = useCallback(async () => {
         try {
@@ -58,7 +58,7 @@ export default function Main({currentAccount}) {
         } catch(error) {
             console.log(error);
         }
-    }, []);
+    }, [currentAccount]);
 
     const wave = async () => {
         try {
