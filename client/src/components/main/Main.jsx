@@ -153,7 +153,7 @@ export default function Main({currentAccount}) {
                         wavePortalContract.off("NewWave", onNewWave);
                         wavePortalContract.off("NewHighFive", onNewHighFive)
                     }
-                    console.log("NewWave || HighFive componentDidUnmount");
+                    console.log("Component unmount.");
                 };
             }
         } catch(error) {
@@ -165,7 +165,7 @@ export default function Main({currentAccount}) {
         getAllWaves();
         getAllHighFives();
         return () => {
-            console.log("getAllWaves || getAllHighFives componentDidUnmount");
+            console.log("Component unmount.");
         }
     }, [getAllWaves, getAllHighFives]);
 
