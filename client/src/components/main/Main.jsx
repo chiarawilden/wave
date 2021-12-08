@@ -242,7 +242,7 @@ export default function Main({currentAccount}) {
                             )
                         }).reverse()}
                         {/* FOOTER */}
-                        <div className="copyright">
+                        <div className="footer">
                             <div><a href="https://chiarawilden.com">Chiara Wilden</a> 2021</div> 
                             <div>
                                Created With&nbsp;<a href="http://buildspace.so">Buildspace</a>&nbsp;
