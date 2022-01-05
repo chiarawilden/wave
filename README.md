@@ -13,7 +13,7 @@ Naturally, I ran into a few snags, but with some help from [the Buildspace commu
 # Tech Stack
 
 * HTML, CSS, JavaScript, JSX, Solidity
-* ReactJS (using my new [React Starter](https://github.com/chiarawilden/react-starter))
+* ReactJS
 * Hardhat
 * EthersJS
 * Alchemy
