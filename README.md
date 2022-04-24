@@ -45,7 +45,7 @@ I'd love to add reply functionality. That would be fun!
 
 # Live Demo
 
-[View a live demo here](https://portfolio.chiarawilden.com/wave-portal). (And don't forget to leave me a message!)
+[View a live demo here](https://dev.chiarawilden.com/wave-portal). (And don't forget to leave me a message!)
 
 
 
